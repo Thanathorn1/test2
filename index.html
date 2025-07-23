@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>มีบางอย่างอยากบอก...</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50vh;
-      background: #fef6e4;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fff1eb, #ace0f9);
     }
 
     .container {
       text-align: center;
+      padding: 30px;
+    }
+
+    #before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     button {
       background-color: #ff8fab;
       border: none;
-      padding: 15px 30px;
-      font-size: 20px;
-      border-radius: 12px;
+      padding: 15px 40px;
+      font-size: 22px;
+      border-radius: 30px;
       cursor: pointer;
       color: white;
-      transition: 0.3s;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
@@ -40,40 +46,96 @@
     }
 
     .surprise {
-      font-size: 36px;
+      font-size: 24px;
       color: #d6336c;
       animation: fadeIn 2s ease-in;
+      margin-top: 10px;
+      background: #fff5;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 192, 203, 0.4);
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.9);}
       to { opacity: 1; transform: scale(1);}
     }
+
+    video {
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      margin-top: 20px;
+    }
+
+    img {
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin-top: 15px;
+    }
+
+    /* ลูกโป่งลอยขึ้น */
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: #ff6b81;
+      border-radius: 50% 50% 45% 45%;
+      animation: float 10s infinite ease-in;
+      opacity: 0.8;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #333;
+      transform: translateX(-50%);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+
   </style>
 </head>
 <body>
-  <div id="before" style="margin-top: 300px;">
-      <button onclick="showSurprise()"> --> Click here <-- </button>
+
+  <!-- ลูกโป่งลอย -->
+  <div class="balloon" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="balloon" style="left: 40%; animation-delay: 1s; background:#ffa502;"></div>
+  <div class="balloon" style="left: 60%; animation-delay: 2s; background:#70a1ff;"></div>
+  <div class="balloon" style="left: 80%; animation-delay: 3s; background:#7bed9f;"></div>
+
+  <!-- หน้าแรก -->
+  <div id="before">
+    <button onclick="showSurprise()">🎁 Click here 🎉</button>
   </div>
-  <div class="container" style="margin-top: 200px;">
+
+  <!-- หน้า surprise -->
+  <div class="container">
     <div id="after" class="hidden">
-      <p class="surprise">🎉 สุขสันต์วันเกิดนะเพื่อน! 🎂<br>ขอให้มีความสุขมาก ๆ ในทุก ๆ วัน ❤️</p>
-      <img src="img/23610.jpg" alt="img" width="200px" height="250px">
-      <video id="hbd-video" autoplay loop playsinline width="150px" height="200px" controls>
+      <p class="surprise" style="font-size: 20px;">
+        🎉 สุขสันต์วันเกิดนะเพื่อน! 🎂<br>
+        ขอให้มีความสุขมากๆ ในทุกๆ วัน ❤️
+      </p>
+      <img src="img/23610.jpg" alt="img" width="200px" height="250px" />
+      <br />
+      <video id="hbd-video" autoplay loop playsinline width="200px" height="250px" controls>
         <source src="video/creepy_happy_birth_day.mp4" type="video/mp4">
       </video>
-      <!-- คุณสามารถเพิ่มรูป, เพลง หรือ effect อื่น ๆ ที่นี่ -->
-    </div> 
+    </div>
   </div>
 
   <script>
     function showSurprise() {
       document.getElementById('before').classList.add('hidden');
       document.getElementById('after').classList.remove('hidden');
-    // เล่นวิดีโอพร้อมเสียง
       document.querySelector('video').play();
-      // Optional: เล่นเสียง
-      // new Audio('happy_birthday.mp3').play();
     }
   </script>
 </body>
