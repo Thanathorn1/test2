@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>มีบางอย่างอยากบอก...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      background: #fef6e4;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    button {
+      background-color: #ff8fab;
+      border: none;
+      padding: 15px 30px;
+      font-size: 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e85d75;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .surprise {
+      font-size: 36px;
+      color: #d6336c;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9);}
+      to { opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <div id="before" style="margin-top: 300px;">
+      <button onclick="showSurprise()"> --> Click here <-- </button>
+  </div>
+  <div class="container" style="margin-top: 200px;">
+    <div id="after" class="hidden">
+      <p class="surprise">🎉 สุขสันต์วันเกิดนะเพื่อน! 🎂<br>ขอให้มีความสุขมาก ๆ ในทุก ๆ วัน ❤️</p>
+      <img src="img/23610.jpg" alt="img" width="200px" height="250px">
+      <video id="hbd-video" autoplay loop playsinline width="150px" height="200px" controls>
+        <source src="video/creepy_happy_birth_day.mp4" type="video/mp4">
+      </video>
+      <!-- คุณสามารถเพิ่มรูป, เพลง หรือ effect อื่น ๆ ที่นี่ -->
+    </div> 
+  </div>
+
+  <script>
+    function showSurprise() {
+      document.getElementById('before').classList.add('hidden');
+      document.getElementById('after').classList.remove('hidden');
+    // เล่นวิดีโอพร้อมเสียง
+      document.querySelector('video').play();
+      // Optional: เล่นเสียง
+      // new Audio('happy_birthday.mp3').play();
+    }
+  </script>
+</body>
+</html>
