@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>มีบางอย่างอยากบอก...</title>
+  <title>Home</title>
   <style>
     body {
       margin: 0;
@@ -13,16 +13,27 @@
       background: linear-gradient(135deg, #fff1eb, #ace0f9);
     }
 
-    .container {
+    #before {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #after-container {
+      display: none; /* ซ่อนตอนเริ่ม */
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 90vh;
       text-align: center;
       padding: 30px;
     }
 
-    #before {
-      position: absolute;
-      top: 50%;
-      left: 30%;
-      transform: translate(-15%, -50%);
+    #after {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     button {
@@ -39,10 +50,6 @@
 
     button:hover {
       background-color: #e85d75;
-    }
-
-    .hidden {
-      display: none;
     }
 
     .surprise {
@@ -100,7 +107,6 @@
       0% { transform: translateY(0); }
       100% { transform: translateY(-120vh); }
     }
-
   </style>
 </head>
 <body>
@@ -113,28 +119,28 @@
 
   <!-- หน้าแรก -->
   <div id="before">
-    <button onclick="showSurprise()" style="font-size: 15px;">🎁 Click here 🎉</button>
+    <button onclick="showSurprise()" style="font-family:Arial, Helvetica, sans-serif; font-size: 15px;">🎁 Click here 🎉</button>
   </div>
 
   <!-- หน้า surprise -->
-  <div class="container">
-    <div id="after" class="hidden">
+  <div id="after-container">
+    <div id="after">
       <p class="surprise" style="font-size: 15px;">
         🎉 สุขสันต์วันเกิดนะเพื่อน! 🎂<br>
         ขอให้มีความสุขมากๆ ในทุกๆ วัน❤️
       </p>
-      <img src="img/23610.jpg" alt="img" width="200px" height="250px" />
+      <img src="img/23610.jpg" alt="img" width="150px" height="260px" />
       <br />
       <video id="hbd-video" autoplay loop playsinline width="150px" height="200px" controls>
-        <source src="video/creepy_happy_birth_day.mp4" type="video/mp4">
+        <source src="video/the_rock.mp4" type="video/mp4">
       </video>
     </div>
   </div>
 
   <script>
     function showSurprise() {
-      document.getElementById('before').classList.add('hidden');
-      document.getElementById('after').classList.remove('hidden');
+      document.getElementById('before').style.display = 'none';
+      document.getElementById('after-container').style.display = 'flex';
       document.querySelector('video').play();
     }
   </script>
